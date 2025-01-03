@@ -1,16 +1,20 @@
 import React from 'react';
-import { Layout } from './components/Layout';
-import { Dashboard } from './components/Dashboard';
-import { ThemeProvider } from './contexts/ThemeContext';
-import { mockStudentData } from './data/mockData';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Login from './pages/Login';
 
 function App() {
   return (
-    <ThemeProvider>
-      <Layout>
-        <Dashboard student={mockStudentData} />
-      </Layout>
-    </ThemeProvider>
+    <Router>
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
